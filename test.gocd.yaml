@@ -1,6 +1,6 @@
 format_version: 10
 pipelines:
-  prod-java-pipeline:
+  prod-java-pipeline2:
     group: Tomcat
     label_template: ${COUNT}
     lock_behavior: none
@@ -13,7 +13,7 @@ pipelines:
         auto_update: true
         branch: master
     stages:
-    - prod-Build-stage:
+    - prod-Build-stage2:
         fetch_materials: true
         keep_artifacts: false
         clean_workspace: false
@@ -21,7 +21,7 @@ pipelines:
           type: success
           allow_only_on_success: false
         jobs:
-          prod-Build-job:
+          prod-Build-job2:
             timeout: 0
             resources:
             - Tomcat1
@@ -32,7 +32,7 @@ pipelines:
                 - install
                 command: mvn
                 run_if: passed
-    - Prod-Deploy-stage:
+    - Prod-Deploy-stage2:
         fetch_materials: true
         keep_artifacts: false
         clean_workspace: false
@@ -40,7 +40,7 @@ pipelines:
           type: success
           allow_only_on_success: true
         jobs:
-          Prod-deployy-job:
+          Prod-deployy-job2:
             timeout: 0
             resources:
             - Tomcat1
